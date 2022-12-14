@@ -1,6 +1,6 @@
 {
   "name": "deep-tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,8 +9,9 @@
   ],
   "scripts": {
     "jest": "jest --config=jest.config.json",
+    "check-types": "tsc",
     "lint": "eslint . --ext ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint && npm run check-types && npm run jest",
     "build": "rm -rf dist && tsc"
   },
   "keywords": [],
