@@ -17,6 +17,7 @@ module.exports = {
     '@typescript-eslint/indent': ['error', 2],
     'no-undef': 'off', // Disabled as it is mainly covered by typescript already
   },
+  ignorePatterns: ['dist/*'],
   settings: {
     'import/resolver': {
       node: {

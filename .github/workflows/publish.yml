@@ -1,23 +1,31 @@
 name: "🚀 publish"
 
 on:
-    push:
-        branches:
-          - master
+  push:
+    branches:
+      - master
 
 jobs:
-    release:
-        name: 🚀 publish
-        runs-on: ubuntu-latest
-        steps:
-            - name: 📚 checkout
-              uses: actions/checkout@v3
-            - name: 🟢 node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 16
-                  registry-url: https://registry.npmjs.org
-            - name: 🚀 publish
-              run: npm publish --access public
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+  publish:
+    name: 🚀 publish
+    runs-on: ubuntu-latest
+    steps:
+        - name: Wait for tests to succeed
+          uses: lewagon/wait-on-check-action@v1.2.0
+          with:
+            ref: ${{ github.ref }}
+            check-name: tests
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            wait-interval: 10
+            allowed-conclusions: success
+        - name: 📚 checkout
+          uses: actions/checkout@v3
+        - name: 🟢 node
+          uses: actions/setup-node@v3
+          with:
+              node-version: 16
+              registry-url: https://registry.npmjs.org
+        - name: 🚀 publish
+          run: npm publish --access public
+          env:
+              NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
