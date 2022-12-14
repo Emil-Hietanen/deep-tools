@@ -1,7 +1,15 @@
 {
   "name": "deep-tools",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.3",
+  "author": "Emil Hietanen",
+  "homepage": "https://github.com/Emil-Hietanen/deep-tools#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Emil-Hietanen/deep-tools"
+  },
+  "description": "Dazzlingly fast JS/TS deep utility tools",
+  "keywords": ["deep-tools", "deep", "equality", "difference"],
+  "license": "(MIT OR Apache-2.0)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -14,9 +22,6 @@
     "test": "npm run lint && npm run check-types && npm run jest",
     "build": "rm -rf dist && tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.2.3",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
